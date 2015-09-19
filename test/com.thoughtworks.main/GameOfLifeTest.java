@@ -3,6 +3,10 @@ package com.thoughtworks.main;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GameOfLifeTest {
@@ -65,5 +69,16 @@ public class GameOfLifeTest {
         gameOfLife.start();
 
         verify(grid, times(1)).getOutputInFormattedOrder();
+    }
+
+    @Test
+    public void shouldDisplayTheOutputOnTheScreen() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        when(consoleInput.readInput()).thenReturn("x -", "- x", "x x", "");
+        when(grid.getOutputInFormattedOrder()).thenReturn("some");
+        gameOfLife.start();
+
+        assertEquals("some", outputStream.toString());
     }
 }
