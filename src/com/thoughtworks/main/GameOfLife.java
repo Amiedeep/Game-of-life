@@ -34,5 +34,6 @@ public class GameOfLife {
         grid.initializeGridCells(rows, columns);
         grid.populateCells(inputValues);
         grid.startGame();
+        grid.getOutputInFormattedOrder();
     }
 }

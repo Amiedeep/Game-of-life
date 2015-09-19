@@ -58,4 +58,12 @@ public class GameOfLifeTest {
 
         verify(grid, times(1)).startGame();
     }
+
+    @Test
+    public void shouldCallTheGetOutputInFormattedOrderMethodWhenICallStartMethod() {
+        when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
+        gameOfLife.start();
+
+        verify(grid, times(1)).getOutputInFormattedOrder();
+    }
 }
