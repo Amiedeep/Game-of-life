@@ -29,6 +29,7 @@ public class GameOfLife {
         columns = input.split(" ").length;
         while(!input.equals("")) {
             rows += 1;
+            inputValues.add(input);
             input = consoleInput.readInput();
         }
         grid.initializeGridCells(rows, columns);
