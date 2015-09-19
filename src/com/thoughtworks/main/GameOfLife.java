@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameOfLife {
 
     private ConsoleInput consoleInput;
-    private String[][] cells;
+    private Grid grid;
 
     public GameOfLife(ConsoleInput consoleInput) {
         this.consoleInput = consoleInput;
@@ -27,10 +27,6 @@ public class GameOfLife {
             rows += 1;
             input = consoleInput.readInput();
         }
-        cells = initialiseArray(rows, columns);
-    }
-
-    public String[][] initialiseArray(int rows, int columns) {
-        return new String[rows][columns];
+        grid = new Grid(rows, columns);
     }
 }
