@@ -20,6 +20,24 @@
         <delete dir="out"/>
     </target>
 
+    <target name="build-jar" depends="build">
+        <jar destfile="lib/${project.name}.jar"
+             basedir="out"
+             excludes="**/Test.class">
+            <manifest>
+                <attribute name="Main-Class" value="${package.name}.${main.name}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="build-jar">
+        <java fork="true" failonerror="yes" classname="${package.name}.${main.name}">
+            <classpath>
+                <path location="lib/${project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+
     <target name="runjUnit" depends="build">
         <junit printsummary="yes" haltonfailure="true">
             <classpath>
