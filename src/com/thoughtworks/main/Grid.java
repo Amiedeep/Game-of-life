@@ -35,6 +35,10 @@ public class Grid {
         return false;
     }
 
+    public boolean willDieOfOverCrowding(int row, int column) {
+        return false;
+    }
+
     private int getLiveNeighboursCount(int row, int column) {
         int liveNeighboursCount = 0;
         for (int i = row - 1; i <= row + 1; i++) {
