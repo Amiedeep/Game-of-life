@@ -44,6 +44,10 @@ public class Grid {
     }
 
     public boolean willLiveBecauseOfLiveNeighbours(int row, int column) {
+        if(isIndexOutOfBound(row, column))
+            return false;
+        if(getLiveNeighboursCount(row, column) == 3)
+            return true;
         return false;
     }
 
