@@ -79,6 +79,6 @@ public class GameOfLifeTest {
         when(grid.getOutputInFormattedOrder()).thenReturn("some");
         gameOfLife.start();
 
-        assertEquals("some", outputStream.toString());
+        assertEquals("some\n", outputStream.toString());
     }
 }

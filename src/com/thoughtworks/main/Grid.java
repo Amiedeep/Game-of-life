@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Grid {
 
-    private String[][] cells;
+    private String[][] inputCells;
     private String[][] outputOfGame;
 
     public void initializeGridCells(int rows, int columns) {
         outputOfGame = new String[rows][columns];
-        cells = new String[rows][columns];
+        inputCells = new String[rows][columns];
     }
 
     public void populateCells(List<String> inputValues) {
@@ -24,7 +24,7 @@ public class Grid {
     private void initialiseRowOfCell(String inputLine, int row) {
         int column = 0;
         for(String cellValue : inputLine.split(" ")) {
-            cells[row][column] = cellValue;
+            inputCells[row][column] = cellValue;
             column += 1;
         }
     }
@@ -54,9 +54,9 @@ public class Grid {
     }
 
     public void startGame() {
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[0].length; j++) {
-                outputOfGame[i][j] = cells[i][j];
+        for (int i = 0; i < inputCells.length; i++) {
+            for (int j = 0; j < inputCells[0].length; j++) {
+                outputOfGame[i][j] = inputCells[i][j];
                 if(willDieOfLoneliness(i, j) || willDieOfOverCrowding(i, j)) {
                     outputOfGame[i][j] = "-";
                 }
@@ -83,7 +83,7 @@ public class Grid {
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = column - 1; j <= column + 1; j++) {
                 if(isValidCoordinate(i, j)) {
-                    if(cells[i][j].equals("x") && !isCellCoordinates(row, column, i, j))
+                    if(inputCells[i][j].equals("x") && !isCellCoordinates(row, column, i, j))
                         liveNeighboursCount += 1;
                 }
             }
@@ -96,10 +96,10 @@ public class Grid {
     }
 
     private boolean isValidCoordinate(int row, int column) {
-        return row >= 0 && row < cells.length && column >= 0 && column < cells[0].length;
+        return row >= 0 && row < inputCells.length && column >= 0 && column < inputCells[0].length;
     }
 
     private boolean isIndexOutOfBound(int row, int column) {
-        return row < 0 || row > cells.length || column < 0 || column > cells[0].length;
+        return row < 0 || row > inputCells.length || column < 0 || column > inputCells[0].length;
     }
 }

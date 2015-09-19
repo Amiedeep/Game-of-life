@@ -101,9 +101,10 @@ public class GridTest {
         grid.initializeGridCells(3, 3);
         List<String> list = Arrays.asList("x - -", "x - -", "- - x");
         grid.populateCells(list);
+        grid.startGame();
 
-        assertEquals("x - - \n" +
-                     "x - - \n" +
-                     "- - x \n", grid.getOutputInFormattedOrder());
+        assertEquals("- - - \n" +
+                     "- x - \n" +
+                     "- - - \n", grid.getOutputInFormattedOrder());
     }
 }
