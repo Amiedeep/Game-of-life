@@ -39,15 +39,21 @@ public class Grid {
         int liveNeighboursCount = 0;
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = column - 1; j <= column + 1; j++) {
-                if(i >= 0 && i < cells.length) {
-                    if(j >= 0 && j < cells[0].length) {
-                        if(cells[i][j].equals("x") && !(row == i && column == j))
-                            liveNeighboursCount += 1;
-                    }
+                if(isValidCoordinate(i, j)) {
+                    if(cells[i][j].equals("x") && !isCellCoordinates(row, column, i, j))
+                        liveNeighboursCount += 1;
                 }
             }
         }
         return liveNeighboursCount;
+    }
+
+    private boolean isCellCoordinates(int row, int column, int i, int j) {
+        return row == i && column == j;
+    }
+
+    private boolean isValidCoordinate(int row, int column) {
+        return row >= 0 && row < cells.length && column >= 0 && column < cells[0].length;
     }
 
     private boolean isIndexOutOfBound(int row, int column) {
