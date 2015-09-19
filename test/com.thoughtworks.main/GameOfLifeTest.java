@@ -40,7 +40,14 @@ public class GameOfLifeTest {
         when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
         gameOfLife.start();
 
-        verify(consoleInput, times(4)).readInput();
-        verify(grid, times(1)).initializeGridCells(3,2);
+        verify(grid, times(1)).initializeGridCells(3, 2);
+    }
+
+    @Test
+    public void shouldCallThePopulateCellsMethodWhenICallStartMethod() {
+        when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
+        gameOfLife.start();
+
+        verify(grid, times(1)).populateCells(anyList());
     }
 }

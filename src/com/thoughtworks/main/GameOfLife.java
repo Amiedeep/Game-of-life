@@ -1,6 +1,8 @@
 //the main class which starts your application.
 package com.thoughtworks.main;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameOfLife {
@@ -22,6 +24,7 @@ public class GameOfLife {
     public void start() {
         int rows = 0;
         int columns;
+        List<String> inputValues = new ArrayList<>();
         String input = consoleInput.readInput();
         columns = input.split(" ").length;
         while(!input.equals("")) {
@@ -29,5 +32,6 @@ public class GameOfLife {
             input = consoleInput.readInput();
         }
         grid.initializeGridCells(rows, columns);
+        grid.populateCells(inputValues);
     }
 }
