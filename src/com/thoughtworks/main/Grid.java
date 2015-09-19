@@ -28,6 +28,11 @@ public class Grid {
     }
 
     public boolean willDieOfLoneliness(int row, int column) {
-        return false;
+        try {
+            String cellValue = cells[row][column];
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
