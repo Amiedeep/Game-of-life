@@ -74,4 +74,14 @@ public class GridTest {
 
         assertEquals(false, grid.willLiveBecauseOfLiveNeighbours(-1, -3));
     }
+
+    @Test
+    public void shouldReturnMeFalseWhenICallWillLiveBecauseOfLiveNeighboursWithCellIsNotValidLive() {
+        grid = new Grid();
+        grid.initializeGridCells(3, 3);
+        List<String> list = Arrays.asList("x x x", "x - -", "x x x");
+        grid.populateCells(list);
+
+        assertEquals(false, grid.willLiveBecauseOfLiveNeighbours(1, 1));
+    }
 }
