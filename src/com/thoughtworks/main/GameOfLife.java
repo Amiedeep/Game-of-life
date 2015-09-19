@@ -20,4 +20,8 @@ public class GameOfLife {
     public void start() {
         String input = consoleInput.readInput();
     }
+
+    public char[][] initialiseArray(int rows, int columns) {
+        return new char[rows][columns];
+    }
 }
