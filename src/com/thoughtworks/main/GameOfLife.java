@@ -8,13 +8,14 @@ public class GameOfLife {
     private ConsoleInput consoleInput;
     private Grid grid;
 
-    public GameOfLife(ConsoleInput consoleInput) {
+    public GameOfLife(ConsoleInput consoleInput, Grid grid) {
         this.consoleInput = consoleInput;
+        this.grid = grid;
     }
 
     public static void main(String[] args) {
         ConsoleInput consoleInput = new ConsoleInput(new Scanner(System.in));
-        GameOfLife gameOfLife = new GameOfLife(consoleInput);
+        GameOfLife gameOfLife = new GameOfLife(consoleInput, new Grid());
         gameOfLife.start();
     }
 
@@ -27,6 +28,6 @@ public class GameOfLife {
             rows += 1;
             input = consoleInput.readInput();
         }
-        grid = new Grid(rows, columns);
+        grid.initializeGridCells(rows, columns);
     }
 }

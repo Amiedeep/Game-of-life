@@ -5,7 +5,7 @@ public class Grid {
 
     private String[][] cells;
 
-    public Grid(int rows, int columns) {
+    public void initializeGridCells(int rows, int columns) {
         cells = new String[rows][columns];
     }
 }

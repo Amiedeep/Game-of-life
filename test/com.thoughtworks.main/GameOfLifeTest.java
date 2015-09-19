@@ -9,11 +9,13 @@ public class GameOfLifeTest {
 
     private GameOfLife gameOfLife;
     private ConsoleInput consoleInput;
+    private Grid grid;
 
     @Before
     public void setUp() {
         consoleInput = mock(ConsoleInput.class);
-        gameOfLife = new GameOfLife(consoleInput);
+        grid = mock(Grid.class);
+        gameOfLife = new GameOfLife(consoleInput, grid);
     }
 
     @Test
