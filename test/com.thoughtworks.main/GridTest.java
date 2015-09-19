@@ -66,4 +66,12 @@ public class GridTest {
 
         assertEquals(true, grid.willDieOfOverCrowding(0, 1));
     }
+
+    @Test
+    public void shouldReturnMeFalseWhenICallWillLiveBecauseOfLiveNeighboursMethodWithOutOfIndexBounds() {
+        grid = new Grid();
+        grid.initializeGridCells(4, 4);
+
+        assertEquals(false, grid.willLiveBecauseOfLiveNeighbours(-1, -3));
+    }
 }
