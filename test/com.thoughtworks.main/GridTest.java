@@ -56,4 +56,14 @@ public class GridTest {
 
         assertEquals(false, grid.willDieOfOverCrowding(1, 1));
     }
+
+    @Test
+    public void shouldReturnMeTrueWhenICallWillDieOfOverCrowdingMethodWithCellValidDying() {
+        grid = new Grid();
+        grid.initializeGridCells(3, 3);
+        List<String> list = Arrays.asList("x x x", "x x -", "x x x");
+        grid.populateCells(list);
+
+        assertEquals(true, grid.willDieOfOverCrowding(0, 1));
+    }
 }
