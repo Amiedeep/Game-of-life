@@ -94,4 +94,16 @@ public class GridTest {
 
         assertEquals(true, grid.willLiveBecauseOfLiveNeighbours(1, 1));
     }
+
+    @Test
+    public void shouldReturnMeTheOutputInFormattedOrderWhenICallGetOutputInFormattedOrderMethod() {
+        grid = new Grid();
+        grid.initializeGridCells(3, 3);
+        List<String> list = Arrays.asList("x - -", "x - -", "- - x");
+        grid.populateCells(list);
+
+        assertEquals("x - - \n" +
+                     "x - - \n" +
+                     "- - x \n", grid.getOutputInFormattedOrder());
+    }
 }

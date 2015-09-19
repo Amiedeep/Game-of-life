@@ -64,6 +64,17 @@ public class Grid {
         }
     }
 
+    public String getOutputInFormattedOrder() {
+        String output = "";
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[0].length; j++) {
+                output += cells[i][j] + " ";
+            }
+            output += "\n";
+        }
+        return output;
+    }
+
     private int getLiveNeighboursCount(int row, int column) {
         int liveNeighboursCount = 0;
         for (int i = row - 1; i <= row + 1; i++) {
