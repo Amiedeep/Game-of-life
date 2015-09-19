@@ -3,10 +3,10 @@ package com.thoughtworks.main;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+
 import static junit.framework.TestCase.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class GameOfLifeTest {
 
@@ -21,6 +21,8 @@ public class GameOfLifeTest {
 
     @Test
     public void shouldCallReadInputMethodOfConsoleInputWhenIStartTheApplication() {
+        when(consoleInput.readInput()).thenReturn("");
+        
         gameOfLife.start();
 
         verify(consoleInput, times(1)).readInput();
@@ -32,5 +34,13 @@ public class GameOfLifeTest {
 
         assertEquals(4, outputArray.length);
         assertEquals(5, outputArray[1].length);
+    }
+
+    @Test
+    public void shouldCallTheReadInputMethodRepeatedlyUntilIPassEmptyString() {
+        when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
+        gameOfLife.start();
+
+        verify(consoleInput, times(4)).readInput();
     }
 }
