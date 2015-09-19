@@ -6,8 +6,10 @@ import java.util.List;
 public class Grid {
 
     private String[][] cells;
+    private String[][] outputOfGame;
 
     public void initializeGridCells(int rows, int columns) {
+        outputOfGame = new String[rows][columns];
         cells = new String[rows][columns];
     }
 
@@ -54,11 +56,12 @@ public class Grid {
     public void startGame() {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[0].length; j++) {
+                outputOfGame[i][j] = cells[i][j];
                 if(willDieOfLoneliness(i, j) || willDieOfOverCrowding(i, j)) {
-                    cells[i][j] = "-";
+                    outputOfGame[i][j] = "-";
                 }
                 if(willLiveBecauseOfLiveNeighbours(i, j)) {
-                    cells[i][j] = "x";
+                    outputOfGame[i][j] = "x";
                 }
             }
         }
@@ -66,9 +69,9 @@ public class Grid {
 
     public String getOutputInFormattedOrder() {
         String output = "";
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[0].length; j++) {
-                output += cells[i][j] + " ";
+        for (int i = 0; i < outputOfGame.length; i++) {
+            for (int j = 0; j < outputOfGame[0].length; j++) {
+                output += outputOfGame[i][j] + " ";
             }
             output += "\n";
         }
