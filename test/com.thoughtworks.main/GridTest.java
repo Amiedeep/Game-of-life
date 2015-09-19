@@ -50,8 +50,8 @@ public class GridTest {
     @Test
     public void shouldReturnMeFalseWhenICallWillDieOfOverCrowdingMethodWithCellIsNotValidDying() {
         grid = new Grid();
-        grid.initializeGridCells(2, 2);
-        List<String> list = Arrays.asList("x x", "x x");
+        grid.initializeGridCells(3, 3);
+        List<String> list = Arrays.asList("x x -", "- x -", "- x -");
         grid.populateCells(list);
 
         assertEquals(false, grid.willDieOfOverCrowding(1, 1));
