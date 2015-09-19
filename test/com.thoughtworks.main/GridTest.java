@@ -12,14 +12,6 @@ public class GridTest {
     private Grid grid;
 
     @Test
-    public void shouldReturnMeFalseWhenICallShouldDieOfLonelinessMethod() {
-        grid = new Grid();
-        grid.initializeGridCells(4, 5);
-
-        assertEquals(false, grid.willDieOfLoneliness(1, 3));
-    }
-
-    @Test
     public void shouldReturnMeFalseWhenICallShouldDieOfLonelinessMethodWithOutOfIndexBounds() {
         grid = new Grid();
         grid.initializeGridCells(4, 4);
@@ -35,5 +27,15 @@ public class GridTest {
         grid.populateCells(list);
 
         assertEquals(false, grid.willDieOfLoneliness(1, 1));
+    }
+
+    @Test
+    public void shouldReturnMeTrueWhenICallShouldDieOfLonelinessMethodWithCellValidDying() {
+        grid = new Grid();
+        grid.initializeGridCells(3, 3);
+        List<String> list = Arrays.asList("- x -", "- x -", "- x -");
+        grid.populateCells(list);
+
+        assertEquals(true, grid.willDieOfLoneliness(0, 1));
     }
 }

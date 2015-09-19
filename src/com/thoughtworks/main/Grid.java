@@ -28,11 +28,21 @@ public class Grid {
     }
 
     public boolean willDieOfLoneliness(int row, int column) {
-        try {
-            String cellValue = cells[row][column];
+        int liveNeighboursCount = 0;
+        if(row < 0 || row > cells.length || column < 0 || column > cells[0].length)
             return false;
-        } catch (Exception e) {
-            return false;
+        for (int i = row - 1; i <= row + 1; i++) {
+            for (int j = column - 1; j <= column + 1; j++) {
+                if(i >= 0 && i < cells.length) {
+                    if(j >= 0 && j < cells[0].length) {
+                        if(cells[i][j].equals("x") && !(row == i && column == j))
+                            liveNeighboursCount += 1;
+                    }
+                }
+            }
         }
+        if(liveNeighboursCount < 2)
+            return true;
+        return false;
     }
 }
