@@ -34,4 +34,13 @@ public class GameOfLifeTest {
 
         verify(consoleInput, times(4)).readInput();
     }
+
+    @Test
+    public void shouldCallTheInitializeGridCellsMethodWhenICallStartMethod() {
+        when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
+        gameOfLife.start();
+
+        verify(consoleInput, times(4)).readInput();
+        verify(grid, times(1)).initializeGridCells(3,2);
+    }
 }
