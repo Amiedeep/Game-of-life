@@ -50,4 +50,12 @@ public class GameOfLifeTest {
 
         verify(grid, times(1)).populateCells(anyList());
     }
+
+    @Test
+    public void shouldCallTheStartGameMethodWhenICallStartMethod() {
+        when(consoleInput.readInput()).thenReturn("a bc", "h ehdhju je", "hwjqh", "");
+        gameOfLife.start();
+
+        verify(grid, times(1)).startGame();
+    }
 }
