@@ -26,4 +26,8 @@ public class Grid {
             column += 1;
         }
     }
+
+    public boolean willDieOfLoneliness(int row, int column) {
+        return false;
+    }
 }
