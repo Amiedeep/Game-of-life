@@ -51,6 +51,19 @@ public class Grid {
         return false;
     }
 
+    public void startGame() {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[0].length; j++) {
+                if(willDieOfLoneliness(i, j) || willDieOfOverCrowding(i, j)) {
+                    cells[i][j] = "-";
+                }
+                if(willLiveBecauseOfLiveNeighbours(i, j)) {
+                    cells[i][j] = "x";
+                }
+            }
+        }
+    }
+
     private int getLiveNeighboursCount(int row, int column) {
         int liveNeighboursCount = 0;
         for (int i = row - 1; i <= row + 1; i++) {
