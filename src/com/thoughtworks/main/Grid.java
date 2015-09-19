@@ -28,9 +28,15 @@ public class Grid {
     }
 
     public boolean willDieOfLoneliness(int row, int column) {
-        int liveNeighboursCount = 0;
-        if(row < 0 || row > cells.length || column < 0 || column > cells[0].length)
+        if(isIndexOutOfBound(row, column))
             return false;
+        if(getLiveNeighboursCount(row, column) < 2)
+            return true;
+        return false;
+    }
+
+    private int getLiveNeighboursCount(int row, int column) {
+        int liveNeighboursCount = 0;
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = column - 1; j <= column + 1; j++) {
                 if(i >= 0 && i < cells.length) {
@@ -41,8 +47,10 @@ public class Grid {
                 }
             }
         }
-        if(liveNeighboursCount < 2)
-            return true;
-        return false;
+        return liveNeighboursCount;
+    }
+
+    private boolean isIndexOutOfBound(int row, int column) {
+        return row < 0 || row > cells.length || column < 0 || column > cells[0].length;
     }
 }
